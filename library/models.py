@@ -20,4 +20,14 @@ class Book(Base):
     name = Column(String, unique=True, index=True)
     author_id = Column(Integer, ForeignKey("authors.id"))
 
+
     author = relationship("Author", back_populates="books")
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    login=Column(String, unique=True, index=True)
+    password = Column(String)
+    salt = Column(String, nullable=True)
